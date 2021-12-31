@@ -14,14 +14,12 @@ class Users:
         
     
     # 사용자 정보를 간단하게 가공해서 출력
-    # 이름 - ?세, 성별 (2021년 8월 5일 가입)
+    # 이름 - ?세, 성별 (210805 가입)
     def get_simple_info(self):
-        print(f'{self.name} - {self.get_age()}세, {self.gender}')
         
-        # datetime 양식을 우리가 원하는 형식의 str로 가공해보자
-        temp_str = self.created_at.strftime('%Y년 %m월 %d일')
-        print(f'가입일자 : {temp_str}')
-        
+        temp_date = self.created_at.strftime('%y%m%d')
+        print(f'{self.name} - {self.get_age()}세, {self.gender} ({temp_date} 가입)')
+              
     
     # 사용자의 나이 출력
     def get_age(self):
