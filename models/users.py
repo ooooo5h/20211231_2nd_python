@@ -10,3 +10,9 @@ class Users:
         self.height = dict_info['height']
         self.created_at = dict_info['created_at']
         self.friend_id = dict_info['friend_id']
+        
+    
+    # 사용자 정보를 간단하게 가공해서 출력
+    # 이름 - ?세, 성별
+    def get_simple_info(self):
+        print(f'{self.name} - {self.birth_year}세, {self.gender}')

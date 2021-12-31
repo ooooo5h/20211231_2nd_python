@@ -24,6 +24,6 @@ def get_user_list_from_db():
     for row in result:
         # print(row)    # row 한 줄 : 하나의 dictionary
         user = Users(row)
-        print(user.name)  # dictionary가 Users 객체로 변환되었는지 확인
+        user.get_simple_info()  # dictionary가 Users 객체로 변환되었는지 확인
         
 show_main_menu()
