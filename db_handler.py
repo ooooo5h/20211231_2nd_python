@@ -13,11 +13,3 @@ db = connect(
     )
 
 cursors = db.cursor()
-
-sql = 'SELECT * FROM users'
-
-cursors.execute(sql)
-result = cursors.fetchall()
-
-for row in result:
-    print(row)
