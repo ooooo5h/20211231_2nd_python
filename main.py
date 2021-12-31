@@ -41,7 +41,7 @@ def get_posts_by_page_from_db(page):
 
     for row in result:
         post = Posts(row)
-        print(post.title)
+        post.get_simple_post()
 
 
 show_main_menu()
