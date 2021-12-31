@@ -1,4 +1,5 @@
 from pymysql import connect
+from pymysql import cursors
 from pymysql.cursors import DictCursor
 
 db = connect(
@@ -10,3 +11,13 @@ db = connect(
     charset='utf8',
     cursorclass=DictCursor    
     )
+
+cursors = db.cursor()
+
+sql = 'SELECT * FROM users'
+
+cursors.execute(sql)
+result = cursors.fetchall()
+
+for row in result:
+    print(row)
