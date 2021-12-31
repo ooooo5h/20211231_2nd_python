@@ -40,6 +40,7 @@ def get_posts_by_page_from_db(page):
     result =  get_posts(page)
 
     for row in result:
+        # print(row)
         post = Posts(row)
         post.get_simple_post()
 

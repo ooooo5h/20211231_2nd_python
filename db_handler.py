@@ -29,7 +29,8 @@ def get_user_list():
 def get_posts(page):
     
     offset = (page - 1) * 5
-    sql = f"SELECT * FROM posts AS p ORDER BY p.created_at DESC LIMIT {offset}, 5"
+    sql = f"SELECT p.*, u.name AS writer_name FROM posts AS p JOIN users AS u ON p.user_id = u.id ORDER BY p.created_at DESC LIMIT {offset}, 5"
+    # 쿼리 자체를 날릴 때, 너무 많은 정보는 필요없다 :: 포스트의 전체와 작성자의 이름만 가져오기
     
     cursors.execute(sql)
     result = cursors.fetchall()
