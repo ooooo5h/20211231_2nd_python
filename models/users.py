@@ -1,3 +1,4 @@
+import datetime
 
 class Users:
     
@@ -15,4 +16,11 @@ class Users:
     # 사용자 정보를 간단하게 가공해서 출력
     # 이름 - ?세, 성별
     def get_simple_info(self):
-        print(f'{self.name} - {self.birth_year}세, {self.gender}')
+        print(f'{self.name} - {self.get_age()}세, {self.gender}')
+        
+    
+    # 사용자의 나이 출력
+    def get_age(self):
+        
+        current_year = datetime.datetime.now().year
+        return current_year - self.birth_year + 1
