@@ -1,5 +1,6 @@
-from db_handler import get_user_list
+from db_handler import get_user_list, get_posts
 from models import Users
+from models.posts import Posts
 
 # 메인 메뉴 출력 기능(함수)
 def show_main_menu():
@@ -36,8 +37,11 @@ def get_user_list_from_db():
         
 # 2번 누르면, DB에서 게시글을 페이지에 맞게 요청하는 기능
 def get_posts_by_page_from_db(page):
-    pass
+    result =  get_posts(page)
 
+    for row in result:
+        post = Posts(row)
+        print(post.title)
 
 
 show_main_menu()

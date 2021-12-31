@@ -26,6 +26,7 @@ class Users:
         add_day = datetime.timedelta(days=50)
         print(f'정회원 일자 : {self.created_at + add_day } ')
     
+    
     # 사용자의 나이 출력
     def get_age(self):
         
