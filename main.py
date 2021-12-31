@@ -13,6 +13,14 @@ def show_main_menu():
             print('프로그램을 종료합니다.')
             break
         elif num == 1:
-            pass
+            get_user_list_from_db()
+  
+  
+
+# 1번 누르면, DB에서 수강생 목록 조회를 요청하는 기능
+def get_user_list_from_db():
+    print('db_handler에게 사용자 목록 요청하기')  
+  
+  
         
 show_main_menu()
