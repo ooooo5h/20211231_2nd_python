@@ -1,4 +1,5 @@
-
+from db_handler import get_user_list
+from models import Users
 
 # 메인 메뉴 출력 기능(함수)
 def show_main_menu():
@@ -14,13 +15,15 @@ def show_main_menu():
             break
         elif num == 1:
             get_user_list_from_db()
-  
-  
+    
 
 # 1번 누르면, DB에서 수강생 목록 조회를 요청하는 기능
 def get_user_list_from_db():
-    print('db_handler에게 사용자 목록 요청하기')  
+    result = get_user_list() 
   
-  
+    for row in result:
+        # print(row)    # row 한 줄 : 하나의 dictionary
+        user = Users(row)
+        print(user.name)  # dictionary가 Users 객체로 변환되었는지 확인
         
 show_main_menu()

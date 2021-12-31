@@ -13,3 +13,13 @@ db = connect(
     )
 
 cursors = db.cursor()
+
+
+# 사용자 목록 가져오기
+def get_user_list():
+    sql = f"SELECT * FROM users"
+    
+    cursors.execute(sql)
+    result = cursors.fetchall()
+    
+    return result
