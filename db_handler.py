@@ -82,3 +82,12 @@ def get_all_lectures():
     result = cursors.fetchall()
     
     return result
+
+
+# 강의 추가하기
+def add_lecture(name, max_count, fee, campus):
+    
+    sql = f"INSERT INTO lectures (name, max_count, fee, campus) VALUES ('{name}', {max_count}, {fee}, '{campus}')"
+    
+    cursors.execute(sql)
+    db.commit()
