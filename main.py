@@ -8,6 +8,7 @@ def show_main_menu():
         print('======= 강의 관리 시스템 (LMS) =======')
         print('1. 수강생 목록 조회')
         print('2. 게시글 목록 조회')
+        print('3. 강의 목록 조회')
         print('0. 프로그램 종료')
         print('=====================================')
         num = int(input('메뉴 선택 : '))
@@ -22,6 +23,9 @@ def show_main_menu():
         elif num == 2:       
             page_num = int(input('몇 페이지를 보시겠습니까? : '))
             get_posts_by_page_from_db(page_num)
+            
+        elif num == 3:
+            get_lectures_from_db()
     
 
 # 1번 누르면, DB에서 수강생 목록 조회를 요청하는 기능
@@ -49,6 +53,12 @@ def get_posts_by_page_from_db(page):
         # print(row)
         post = Posts(row)
         post.get_simple_post()
+
+
+
+# 3번 누르면, DB에서 강의목록과 강의별 평균 점수 요청하는 기능
+def get_lectures_from_db():
+    pass
 
 
 show_main_menu()
