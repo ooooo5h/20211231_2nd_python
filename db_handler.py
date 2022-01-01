@@ -35,6 +35,10 @@ def get_posts(page):
     cursors.execute(sql)
     result = cursors.fetchall()
     
+    for row in result:
+        
+        row['reply_count'] = 0
+    
     return result
 
 

@@ -61,7 +61,7 @@ def get_lectures_from_db():
 
     for row in query_result:
         lecture = Lecture(row)
-        print(lecture.name, lecture.avg_score)
+        print(f'{lecture.name} - 평균점수 : {lecture.avg_score}')
 
         
 show_main_menu()
