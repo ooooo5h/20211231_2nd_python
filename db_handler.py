@@ -38,7 +38,21 @@ def get_posts(page):
     for row in result:
         
         row['reply_count'] = 0
-    
+        
+        # 실제로 각 게시글 별 쿼리를 수행하자 댓글이 몇개인지?
+        sql = f"""
+        SELECT COUNT(*) AS reply_count
+        FROM posts_reply AS pr
+        WHERE pr.post_id = {row['id']}        
+        """
+        
+        cursors.execute(sql)
+        reply_count_result = cursors.fetchone()
+        
+        # print(reply_count_result)
+   
+        row['reply_count'] = reply_count_result['reply_count']
+         
     return result
 
 
