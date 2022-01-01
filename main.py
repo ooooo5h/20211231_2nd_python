@@ -1,4 +1,4 @@
-from db_handler import get_user_list, get_posts
+from db_handler import get_user_list, get_posts, get_all_user_count
 from models import Users
 from models.posts import Posts
 
@@ -34,6 +34,12 @@ def get_user_list_from_db():
         user = Users(row)
         user.get_simple_info()  # dictionary가 Users 객체로 변환되었는지 확인
         
+   
+   # DB한번 더 접근해서, 인원수 가져오기(리턴되는 숫자를 user_count에 담음) 
+    user_count = get_all_user_count()  
+    print(f'총 수강생 : {user_count}명')   
+    
+     
         
 # 2번 누르면, DB에서 게시글을 페이지에 맞게 요청하는 기능
 def get_posts_by_page_from_db(page):
