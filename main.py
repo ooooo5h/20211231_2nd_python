@@ -24,8 +24,13 @@ def show_main_menu():
             get_posts_by_page_from_db(page_num)
             
         elif num == 3:
+            print('======= 강의 관리 =======')
             get_lectures_from_db()
-    
+            print('1. 신규 과목 추가')
+            print('0. 이전으로')
+            print('=========================')
+            lecture_menu_num = int(input('메뉴 선택 : '))
+            
 
 # 1번 누르면, DB에서 수강생 목록 조회를 요청하는 기능
 def get_user_list_from_db():
