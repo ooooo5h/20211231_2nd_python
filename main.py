@@ -1,6 +1,5 @@
 from db_handler import get_user_list, get_posts, get_all_user_count, get_all_lectures
-from models import Users
-from models.posts import Posts
+from models import Users, Posts, Lecture
 
 # 메인 메뉴 출력 기능(함수)
 def show_main_menu():
@@ -60,6 +59,9 @@ def get_posts_by_page_from_db(page):
 def get_lectures_from_db():
     query_result = get_all_lectures()
 
-    print(query_result)
+    for row in query_result:
+        lecture = Lecture(row)
+        print(lecture.name, lecture.avg_score)
 
+        
 show_main_menu()
