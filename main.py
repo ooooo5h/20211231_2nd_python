@@ -1,4 +1,4 @@
-from db_handler import get_user_list, get_posts, get_all_user_count
+from db_handler import get_user_list, get_posts, get_all_user_count, get_all_lectures
 from models import Users
 from models.posts import Posts
 
@@ -58,7 +58,8 @@ def get_posts_by_page_from_db(page):
 
 # 3번 누르면, DB에서 강의목록과 강의별 평균 점수 요청하는 기능
 def get_lectures_from_db():
-    pass
+    query_result = get_all_lectures()
 
+    print(query_result)
 
 show_main_menu()

@@ -38,7 +38,7 @@ def get_posts(page):
     return result
 
 
-# 전체 회원수 물어보기
+# 전체 회원의 수 물어보는 함수 추가
 def get_all_user_count():
     
     sql = f"SELECT COUNT(DISTINCT u.id) AS user_count FROM users AS u"
@@ -47,3 +47,20 @@ def get_all_user_count():
     result = cursors.fetchone()
        
     return result['user_count']
+
+
+# 강의 목록과 평점을 같이 가져오는 함수 추가
+def get_all_lectures():
+    
+    sql = f"""
+    SELECT l.name, AVG(lr.score) AS avg_score 
+    FROM lectures AS l 
+    JOIN lecture_review AS lr ON l.id = lr.lecture_id
+    GROUP BY l.id
+    ORDER BY l.name;
+    """
+    
+    cursors.execute(sql)
+    result = cursors.fetchall()
+    
+    return result
