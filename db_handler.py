@@ -67,13 +67,12 @@ def get_all_user_count():
     return result['user_count']
 
 
-# 강의 목록과 평점을 같이 가져오는 함수 추가
+# 강의 목록
 def get_all_lectures():
     
     sql = f"""
-    SELECT l.name, AVG(lr.score) AS avg_score 
+    SELECT l.name, l.id 
     FROM lectures AS l 
-    JOIN lecture_review AS lr ON l.id = lr.lecture_id
     GROUP BY l.id
     ORDER BY l.name;
     """
@@ -81,6 +80,23 @@ def get_all_lectures():
     cursors.execute(sql)
     result = cursors.fetchall()
     
+    for row in result:
+        
+        row['avg_score'] = 0
+        
+        # 평점을 같이 가져오는 sql추가
+        sql = f"""
+        SELECT l.name, ROUND(AVG(lr.score), 1) AS avg_score
+        FROM lectures AS l
+        JOIN lecture_review AS lr ON l.id = lr.lecture_id
+        WHERE lr.lecture_id = {row['id']}        
+        """
+        
+        cursors.execute(sql)
+        result_with_score  = cursors.fetchone()
+            
+        row['avg_score'] = result_with_score['avg_score']
+   
     return result
 
 

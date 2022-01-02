@@ -73,14 +73,12 @@ def get_posts_by_page_from_db(page):
         post.get_simple_post()
 
 
-
 # 3번 누르면, DB에서 강의목록과 강의별 평균 점수 요청하는 기능
 def get_lectures_from_db():
     query_result = get_all_lectures()
 
     for row in query_result:
         lecture = Lecture(row)
-        print(f'{lecture.name} - 평균점수 : {lecture.avg_score}')
-
-        
+        print(f'{lecture.name} - 평균점수 {lecture.avg_score}')
+       
 show_main_menu()
